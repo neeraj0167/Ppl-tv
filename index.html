@@ -1,0 +1,369 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+    <title>StudyMafia - Free Access</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="stylesheet" href="css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="css/plyr.css">
+    <script src="js/plyr.min.js" defer=""></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
+    <!-- Community Viewer CSS -->
+    <link rel="stylesheet" href="css/community-viewer.css">
+<meta name="theme-color" content="#000000">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="StudyMafia">
+<link rel="apple-touch-icon" href="/icons/icon-192.png">
+<link rel="manifest" href="/manifest.json">
+
+
+        <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      :root {
+        color-scheme: dark;
+        --bg-primary: #07070c;
+        --bg-secondary: #101018;
+        --bg-card: #14141f;
+        --bg-card-hover: #1b1b29;
+        --text-primary: #ffffff;
+        --text-secondary: #9797ab;
+        --accent: #7c8cf8;
+        --accent-2: #a78bfa;
+        --accent-hover: #6674e0;
+        --accent-glow: rgba(124, 140, 248, 0.35);
+        --danger: #ef4444;
+        --danger-hover: #dc2626;
+        --warning: #f59e0b;
+        --success: #10b981;
+        --border: #262636;
+        --shadow: rgba(0, 0, 0, 0.55);
+        --radius-lg: 22px;
+        --radius-md: 14px;
+        --radius-sm: 10px;
+      }
+      html { scroll-behavior: smooth; }
+      body {
+        font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        background:
+          radial-gradient(circle at 15% 0%, rgba(124, 140, 248, 0.18), transparent 45%),
+          radial-gradient(circle at 85% 15%, rgba(167, 139, 250, 0.14), transparent 40%),
+          radial-gradient(circle at 50% 100%, rgba(16, 185, 129, 0.08), transparent 45%),
+          var(--bg-primary);
+        background-attachment: fixed;
+        color: var(--text-primary);
+        min-height: 100vh;
+        padding: 24px 16px;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+      .container {
+        max-width: 640px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+      }
+      .header {
+        text-align: center;
+        margin-bottom: 28px;
+        animation: fadeInDown 0.6s ease;
+      }
+      @keyframes fadeInDown {
+        from { opacity: 0; transform: translateY(-20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .app-badge {
+        margin-top: 15px;
+        padding: 9px 18px;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        box-shadow: 0 4px 15px var(--shadow);
+      }
+      .app-label {
+        font-size: 11px;
+        color: var(--text-secondary);
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1.2px;
+      }
+      .app-name {
+        font-size: 15px;
+        background: linear-gradient(90deg, var(--accent), var(--accent-2));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        font-weight: 800;
+        letter-spacing: 0.5px;
+      }
+      .youtube-container {
+        margin-bottom: 24px;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 16px;
+        box-shadow: 0 10px 30px var(--shadow);
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        animation: fadeInUp 0.6s ease;
+      }
+
+      .tutorial-video-wrap {
+        max-width: 340px;
+        margin: 0 auto;
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        box-shadow: 0 14px 40px var(--shadow), 0 0 0 1px var(--border);
+      }
+      .tutorial-video-wrap .plyr {
+        --plyr-color-main: var(--accent);
+        --plyr-video-background: #000;
+        --plyr-menu-background: #14141f;
+        --plyr-menu-color: #fff;
+        --plyr-control-radius: 8px;
+        --plyr-control-spacing: 8px;
+        --plyr-font-size-base: 13px;
+        --plyr-font-size-small: 12px;
+        --plyr-font-size-large: 15px;
+        --plyr-range-thumb-height: 12px;
+        border-radius: var(--radius-md);
+      }
+      .tutorial-video-wrap video {
+        width: 100%;
+        height: auto;
+        display: block;
+        background: #000;
+        object-fit: contain;
+      }
+      .tutorial-video-wrap .plyr__controls {
+        padding: 8px 6px 6px;
+        gap: 4px;
+      }
+      @media (max-width: 480px) {
+        .tutorial-video-wrap { max-width: 260px; }
+      }
+
+      .card {
+        background: linear-gradient(180deg, var(--bg-card), rgba(20, 20, 31, 0.7));
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 36px 32px;
+        margin-bottom: 24px;
+        box-shadow: 0 20px 50px var(--shadow);
+        position: relative;
+        overflow: hidden;
+        animation: fadeInUp 0.6s ease;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(6px);
+      }
+      .card::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--accent), var(--accent-2), var(--success));
+        opacity: 0.9;
+      }
+
+      h1 {
+        font-size: 30px;
+        margin-bottom: 4px;
+        color: var(--text-primary);
+        font-weight: 800;
+        letter-spacing: -0.5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+      }
+      h1 i { color: var(--accent); filter: drop-shadow(0 0 12px var(--accent-glow)); }
+
+      .status-box {
+        background: var(--bg-secondary);
+        border: 1px solid var(--border);
+        border-left: 4px solid var(--success);
+        padding: 22px;
+        border-radius: var(--radius-md);
+        margin-bottom: 22px;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 6px 20px var(--shadow);
+        background: rgba(16, 185, 129, 0.08);
+      }
+      .status-title {
+        font-size: 22px;
+        font-weight: 800;
+        color: var(--success);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .btn-group { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 20px; align-items: center; }
+      .btn-group.center { justify-content: center; }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 15px 28px;
+        border-radius: var(--radius-sm);
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 16px;
+        transition: all 0.25s ease;
+        border: 2px solid transparent;
+        cursor: pointer;
+        min-width: 160px;
+      }
+      .btn-access {
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        color: #fff;
+        border-color: transparent;
+        box-shadow: 0 8px 24px var(--accent-glow);
+      }
+      .btn-access:hover { transform: translateY(-2px); box-shadow: 0 12px 32px var(--accent-glow); }
+
+      @media (max-width: 768px) {
+        body { padding: 14px 10px; }
+        h1 { font-size: 22px; gap: 8px; }
+        .card { padding: 22px 18px; border-radius: 18px; }
+        .status-title { font-size: 18px; }
+        .btn-group { flex-direction: column; }
+        .btn { width: 100%; font-size: 15px; padding: 14px 18px; min-width: unset; }
+        .youtube-container { padding: 12px; border-radius: 16px; }
+      }
+
+      .app-footer {
+        margin-top: 36px;
+        padding: 20px 0;
+        text-align: center;
+        border-top: 1px solid var(--border);
+        color: var(--text-secondary);
+        font-size: 14px;
+      }
+
+      .instruction-text {
+        margin-top: 15px;
+        padding: 14px 16px;
+        background: rgba(124, 140, 248, 0.07);
+        border: 1px solid rgba(124, 140, 248, 0.2);
+        border-left: 3px solid var(--accent);
+        border-radius: var(--radius-sm);
+        color: var(--text-secondary);
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      marquee {
+        display: block;
+        margin-bottom: 22px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1><i class="fa-solid fa-unlock-keyhole"></i> STUDY MAFIA</h1>
+        <div class="app-badge">
+          <span class="app-label">Platform:</span>
+          <span class="app-name">StudyMafia Free Portal</span>
+        </div>
+      </div>
+
+      <div class="youtube-container">
+        <div class="tutorial-video-wrap">
+          <video id="tutorialVideoPlayer" playsinline="" controls="">
+            <source src="media/5a448042-b68a-47e8-8fe5-fd708dd14a8f.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+
+      <marquee behavior="scroll" direction="left" scrollamount="6" tabindex="0" style="
+        background: #10b98120;
+        color: #10b981;
+        padding: 10px 15px;
+        font-size: 15px;
+        font-weight: 600;
+        border: 1px solid #10b98140;
+        border-radius: 6px;
+        outline: none;
+      ">
+        🎉 Welcome to <strong>StudyMafia</strong>! Unlimited direct access is unlocked for all users.
+      </marquee>
+
+      <div class="card">
+        <div class="status-box">
+          <div class="status-title"><i class="fa-solid fa-circle-check"></i> Access Granted</div>
+          <p style="color: var(--text-secondary); margin-top: 10px;">Full feature access is directly enabled without key verification.</p>
+        </div>
+
+        <div class="instruction-text">
+          <i class="fa-solid fa-circle-info"></i> Click the button below to directly enter the StudyMafia platform.
+        </div>
+
+        <div class="btn-group center" style="margin-top: 25px;">
+          <a href="https://stream.studymafia.cc" class="btn btn-access">
+            <i class="fa-solid fa-rocket" style="margin-right: 8px;"></i> Enter Website Now
+          </a>
+        </div>
+
+        <div style="margin-top: 25px;">
+          <center>
+            <a href="https://t.me/+uMwB0J4i2d0wZGY1" target="_blank" style="text-decoration: none;">
+              <button style="
+                background: red;
+                border: 2px solid red;
+                color: #fff;
+                padding: 12px 24px;
+                font-size: 16px;
+                font-weight: bold;
+                border-radius: 8px;
+                cursor: pointer;
+                box-shadow: 0 0 8px red, 0 0 16px red;
+                transition: all 0.3s ease-in-out;
+              ">
+                <i class="fa-brands fa-telegram"></i> Join New Telegram Channel
+              </button>
+            </a>
+          </center>
+        </div>
+      </div>
+
+      <footer class="app-footer">
+        <p>&copy; 2026 StudyMafia. All rights reserved.</p>
+      </footer>
+    </div>
+
+    <script>
+      // Initialize Plyr for tutorial video player
+      (function() {
+        function initPlyr() {
+          const el = document.getElementById('tutorialVideoPlayer');
+          if (!el || typeof Plyr === 'undefined') return;
+          new Plyr(el, {
+            iconUrl: 'https://cdn.jsdelivr.net/npm/plyr@3.7.8/dist/plyr.svg',
+            ratio: '9:16',
+            controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'fullscreen'],
+            resetOnEnd: true
+          });
+        }
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', initPlyr);
+        } else {
+          initPlyr();
+        }
+      })();
+    </script>
+</body></html>
